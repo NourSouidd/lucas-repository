@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.demo7.controllers.AdminController">
+
+    <!-- Titre Principal -->
+    <top>
+        <Label text="Espace Administrateur" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    </top>
+
+    <center>
+        <TabPane>
+
+            <!-- Onglet Gestion des Utilisateurs -->
+            <Tab text="Gestion des Utilisateurs">
+                <VBox spacing="10" style="-fx-padding: 10;">
+                    <TableView fx:id="tableUsers">
+                        <columns>
+                            <TableColumn text="ID" fx:id="colUserId"/>
+                            <TableColumn text="Nom" fx:id="colUserNom"/>
+                            <TableColumn text="Prénom" fx:id="colUserPrenom"/>
+                            <TableColumn text="Email" fx:id="colUserEmail"/>
+                            <TableColumn text="Rôle" fx:id="colUserRole"/>
+                        </columns>
+                    </TableView>
+
+                    <HBox spacing="10">
+                        <Button text="Passer en Chef de Projet" fx:id="btnPromoteChef" onAction="#handlePromoteChef"/>
+                        <Button text="Passer en Administrateur" fx:id="btnPromoteAdmin" onAction="#handlePromoteAdmin"/>
+                        <Button text="Rétrograder en Employé" fx:id="btnDowngradeToEmployee" onAction="#handleDowngradeToEmployee"/>
+                        <Button text="Supprimer l'Utilisateur" fx:id="btnDeleteUser" onAction="#handleDeleteUser"/>
+                    </HBox>
+                </VBox>
+            </Tab>
+
+            <!-- Onglet Gestion des Missions -->
+            <Tab text="Gestion des Missions">
+                <VBox spacing="10" style="-fx-padding: 10;">
+                    <TableView fx:id="tableMissions">
+                        <columns>
+                            <TableColumn text="ID" fx:id="colMissionId"/>
+                            <TableColumn text="Nom" fx:id="colMissionNom"/>
+                            <TableColumn text="Description" fx:id="colMissionDesc"/>
+                            <TableColumn text="Personnel Affecté" fx:id="colMissionPersonnel"/>
+                            <TableColumn text="Statut" fx:id="colMissionStatut"/>
+                        </columns>
+                    </TableView>
+
+                    <!-- Formulaire d'ajout et de modification de mission -->
+                    <VBox spacing="10">
+                        <Label text="Nom de la mission:"/>
+                        <TextField fx:id="txtMissionName"/>
+
+                        <Label text="Date de début:"/>
+                        <DatePicker fx:id="dpMissionStartDate"/>
+
+                        <Label text="Durée (jours):"/>
+                        <TextField fx:id="txtMissionDuration"/>
+
+                        <Label text="Statut de la mission:"/>
+                        <ComboBox fx:id="comboMissionStatus"/>
+
+                        <HBox spacing="10">
+                            <Button text="Ajouter Mission" fx:id="btnAddMission" onAction="#handleAddMission"/>
+                            <Button text="Modifier Mission" fx:id="btnUpdateMission" onAction="#handleUpdateMission"/>
+                            <Button text="Supprimer Mission" fx:id="btnDeleteMission" onAction="#handleDeleteMission"/>
+                        </HBox>
+                    </VBox>
+                </VBox>
+            </Tab>
+
+            <!-- Onglet Affectation des Missions -->
+            <Tab text="Affectation des Missions">
+                <VBox spacing="10" style="-fx-padding: 10;">
+                    <Label text="Sélectionnez une mission :"/>
+                    <ComboBox fx:id="comboMissions"/>
+
+                    <Label text="Affecter/Retirer un employé :"/>
+                    <ComboBox fx:id="comboUsers"/>
+
+                    <HBox spacing="10">
+                        <Button text="Affecter" fx:id="btnAffecterMission" onAction="#handleAffecterMission"/>
+                        <Button text="Retirer" fx:id="btnRetirerMission" onAction="#handleRetirerMission"/>
+                    </HBox>
+                </VBox>
+            </Tab>
+
+        </TabPane>
+    </center>
+
+    <!-- Bouton Retour -->
+    <bottom>
+        <Button text="Retour à l'accueil" fx:id="btnRetourAccueil" onAction="#handleRetourAccueil"/>
+    </bottom>
+</BorderPane>
