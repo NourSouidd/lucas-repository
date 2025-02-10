@@ -9,9 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseConnection {
-    private static final String URL = "jdbc:mysql://localhost:3306/mabase";
-    private static final String USER = "root";
-    private static final String PASSWORD = "TalenTrack";
+    private static final String URL = "jdbc:mysql://109.176.199.97:3306/TalenTrack";
+    private static final String USER = "lucas";
+    private static final String PASSWORD = "lucas";
+
 
     private static Connection connection;
 
